@@ -6,6 +6,8 @@
     <title>Reports Distribution System</title>
     <!-- Include Flatpickr CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!-- Include Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -31,24 +33,23 @@
         }
         .input-container {
             margin-bottom: 10px;
-            position: relative;
+            position: relative; /* Position the icon relative to the container */
         }
         #datePicker,
         #statusFilter {
-            width: 150px;
-            padding: 8px 28px 8px 8px; /* Add space for the icon */
+            width: calc(100% - 32px); /* Adjust width to accommodate icon */
+            padding: 8px;
             border: 1px solid black;
             border-radius: 5px;
             background-color: #fff;
             font-size: 14px;
-            box-sizing: border-box; /* Include padding and border in width calculation */
         }
         .calendar-icon {
             position: absolute;
             top: 50%;
-            right: 10px;
+            right: 8px;
             transform: translateY(-50%);
-            cursor: pointer;
+            pointer-events: none; /* Make sure the icon doesn't interfere with input */
         }
         table {
             width: 100%;
@@ -81,8 +82,8 @@
             <label for="datePicker">Select Date:</label>
             <!-- Replace input type="date" with this -->
             <input type="text" id="datePicker">
-            <!-- Calendar icon -->
-            <img src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png" alt="calendar" class="calendar-icon" id="calendarIcon">
+            <!-- Add calendar icon -->
+            <i class="fas fa-calendar-alt calendar-icon"></i>
         </div>
         <div class="input-container">
             <label for="statusFilter">Search by Status:</label>
@@ -219,11 +220,6 @@
             }
         });
 
-        // Add click event listener to calendar icon
-        document.getElementById('calendarIcon').addEventListener('click', function() {
-            document.getElementById('datePicker').click(); // Trigger click event on date picker input
-        });
-
         document.getElementById('statusFilter').addEventListener('change', function() {
             const tableBody = document.querySelector('#reportTable tbody');
             tableBody.innerHTML = ''; // Clear existing rows
@@ -243,3 +239,4 @@
     </script>
 </body>
 </html>
+
