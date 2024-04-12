@@ -212,7 +212,7 @@
                     if (endTimeCell.textContent === '') {
                         endTimeCell.textContent = endTimeString;
                     }
-                }, 1 * 60000); // 1 minute in milliseconds
+                }, 2 * 60000); // 1 minute in milliseconds
             });
         }
 
@@ -247,7 +247,7 @@
         setInterval(function() {
             currentBatch++;
             generateReport(currentBatch);
-        }, 1 * 60 * 1000); // 1 minute in milliseconds
+        }, 3 * 60 * 1000); // 1 minute in milliseconds
     </script>
 </body>
 </html>
