@@ -68,12 +68,17 @@
             color: white;
             position: sticky; /* Make the headers sticky */
             top: 0; /* Stick to the top */
+            z-index: 2; /* Ensure the header is above the rows */
         }
         .statusDone {
             color: black;
         }
         .statusFail {
             color: black;
+        }
+        .table-wrapper {
+            max-height: 400px; /* Set a maximum height for the table */
+            overflow-y: auto; /* Enable vertical scrolling */
         }
     </style>
 </head>
@@ -101,22 +106,24 @@
             <button id="refreshButton">Refresh</button>
         </div>
         <br><br>
-        <table id="reportTable">
-            <thead>
-                <tr>
-                    <th>Task</th>
-                    <th>As of Date</th>
-                    <th>Batch</th>
-                    <th>Status</th>
-                    <th>Start Time</th>
-                    <th>End Time</th>
-                    <th>Value</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Data will be dynamically added here -->
-            </tbody>
-        </table>
+        <div class="table-wrapper">
+            <table id="reportTable">
+                <thead>
+                    <tr>
+                        <th>Task</th>
+                        <th>As of Date</th>
+                        <th>Batch</th>
+                        <th>Status</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be dynamically added here -->
+                </tbody>
+            </table>
+        </div>
     </div> <!-- Close the container -->
 
     <!-- Include Flatpickr JS -->
@@ -205,7 +212,7 @@
                     if (endTimeCell.textContent === '') {
                         endTimeCell.textContent = endTimeString;
                     }
-                }, 2 * 60000); // 1 minute in milliseconds
+                }, 1 * 60000); // 1 minute in milliseconds
             });
         }
 
@@ -240,7 +247,7 @@
         setInterval(function() {
             currentBatch++;
             generateReport(currentBatch);
-        }, 3 * 60 * 1000); // 1 minute in milliseconds
+        }, 1 * 60 * 1000); // 1 minute in milliseconds
     </script>
 </body>
 </html>
