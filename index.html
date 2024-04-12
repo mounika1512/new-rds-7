@@ -213,11 +213,15 @@
             dateFormat: "Y-m-d", // Set date format
             onChange: function(selectedDates, dateStr) {
                 // Handle date change event
-                document.getElementById('datePicker').value = dateStr; // Set the value of the textbox
                 clearReport();
                 currentBatch = 1;
                 generateReport(currentBatch);
             }
+        });
+
+        // Add click event listener to calendar icon
+        document.getElementById('calendarIcon').addEventListener('click', function() {
+            document.getElementById('datePicker').click(); // Trigger click event on date picker input
         });
 
         document.getElementById('statusFilter').addEventListener('change', function() {
