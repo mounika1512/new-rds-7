@@ -37,20 +37,21 @@
         }
         #datePicker,
         #statusFilter {
-            width: 150px; /* Adjust width to accommodate icon */
+            width: calc(100% - 32px); /* Adjust width to accommodate icon */
             padding: 8px;
             border: 1px solid black;
             border-radius: 5px;
             background-color: #fff;
             font-size: 14px;
+            padding-right: 32px; /* Ensure space for the icon */
         }
         .calendar-icon {
             position: absolute;
             top: 50%;
-            bottom: 50%
-            right: 0px;
             transform: translateY(-50%);
+            right: 10px;
             pointer-events: none; /* Make sure the icon doesn't interfere with input */
+            z-index: 1; /* Ensure the icon is above the input field */
         }
         table {
             width: 100%;
@@ -82,9 +83,11 @@
         <div class="input-container">
             <label for="datePicker">Select Date:</label>
             <!-- Replace input type="date" with this -->
-            <input type="text" id="datePicker">
-            <!-- Add calendar icon -->
-            <i class="fas fa-calendar-alt calendar-icon"></i>
+            <div style="position:relative;">
+                <input type="text" id="datePicker">
+                <!-- Add calendar icon -->
+                <i class="fas fa-calendar-alt calendar-icon"></i>
+            </div>
         </div>
         <div class="input-container">
             <label for="statusFilter">Search by Status:</label>
@@ -117,6 +120,7 @@
     </div> <!-- Close the container -->
 
     <!-- Include Flatpickr JS -->
+    
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
    
     <script>
@@ -240,4 +244,3 @@
     </script>
 </body>
 </html>
-
